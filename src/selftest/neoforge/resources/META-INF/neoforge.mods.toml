@@ -1,0 +1,11 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+modId="munch_selftest"
+version="1.0.0"
+displayName="Munch self test"
+
+[[mixins]]
+config="munch_selftest.mixins.json"

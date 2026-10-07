@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+issueTrackerURL="https://github.com/comedy01/Munch/issues"
+
+[[mods]]
+modId="munch"
+version="${version}"
+displayName="Munch"
+displayURL="https://github.com/comedy01/Munch"
+logoFile="assets/munch/icon128.png"
+authors="comedy01"
+description='''Eating and drinking animations. Food gets bitten down with every chew, and drinks drain as you sip, for every food and drink, modded ones included. Client-side only.'''
+
+[[dependencies.munch]]
+modId="forge"
+mandatory=true
+versionRange="${forge_range}"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.munch]]
+modId="minecraft"
+mandatory=true
+versionRange="${mc_range}"
+ordering="NONE"
+side="CLIENT"
