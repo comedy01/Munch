@@ -13,6 +13,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +35,7 @@ public final class Eating {
     private static final Map<PlanKey, Plan> PLANS = lru();
     private static final Map<MeshKey, Object> MESHES = lru();
 
-    private static boolean failed;
+    private static final Set<Item> FAILED = new HashSet<>();
     private static int cuts;
 
     private final LivingEntity entity;
@@ -62,7 +63,7 @@ public final class Eating {
     }
 
     public static Eating start(ItemStack item, ItemDisplayContext context, Object owner) {
-        if (failed || item.isEmpty()) {
+        if (item.isEmpty() || FAILED.contains(item.getItem())) {
             return null;
         }
         MunchConfig config = MunchClient.config();
@@ -95,9 +96,11 @@ public final class Eating {
         return new Eating(entity, item, duration, drink, remainder);
     }
 
-    public static void fail(RuntimeException e) {
-        failed = true;
-        LOGGER.error("Munch could not change the eaten item and turned itself off for this session", e);
+    public void fail(RuntimeException e) {
+        if (FAILED.add(item.getItem())) {
+            LOGGER.error("Munch could not change {} and will leave it unanimated for this session",
+                    BuiltInRegistries.ITEM.getKey(item.getItem()), e);
+        }
     }
 
     public ItemStack remainder() {

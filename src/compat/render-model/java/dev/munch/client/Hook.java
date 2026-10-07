@@ -24,7 +24,7 @@ public final class Hook {
             return Models.cut(eating, model, index -> index >= 0 && colors.getColor(stack, index) != -1,
                     () -> renderer.getModel(eating.remainder(), level, entity, 0));
         } catch (RuntimeException e) {
-            Eating.fail(e);
+            eating.fail(e);
             return model;
         }
     }

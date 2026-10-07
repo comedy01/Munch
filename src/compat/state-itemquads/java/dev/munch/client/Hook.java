@@ -30,7 +30,7 @@ public final class Hook {
         try {
             cut(eating, resolver, output, context, level, owner, seed);
         } catch (RuntimeException e) {
-            Eating.fail(e);
+            eating.fail(e);
         }
     }
 
