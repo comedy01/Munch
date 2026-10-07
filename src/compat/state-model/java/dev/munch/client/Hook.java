@@ -33,7 +33,7 @@ public final class Hook {
                 access.munch$setModel(cut);
             }
         } catch (RuntimeException e) {
-            Eating.fail(e);
+            eating.fail(e);
         }
     }
 

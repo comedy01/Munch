@@ -28,7 +28,7 @@ public final class Hook {
         try {
             cut(eating, output, top, append);
         } catch (RuntimeException e) {
-            Eating.fail(e);
+            eating.fail(e);
         }
     }
 
