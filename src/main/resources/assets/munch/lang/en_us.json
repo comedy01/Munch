@@ -1,0 +1,13 @@
+{
+  "munch.options.title": "Munch",
+  "munch.options.enabled": "Munch",
+  "munch.options.enabled.tooltip": "Turn every eating and drinking animation on or off.",
+  "munch.options.others": "Other Players & Mobs",
+  "munch.options.others.tooltip": "Show bites and draining for other players and mobs too, not just for you.",
+  "munch.options.eating": "Bites",
+  "munch.options.eating.tooltip": "Food loses a bite every time you chew, until only a small piece is left.",
+  "munch.options.drinking": "Draining",
+  "munch.options.drinking.tooltip": "Potions, milk, honey and stews empty as you drink or eat them.",
+  "munch.options.reset": "Reset to Defaults",
+  "munch.options.reset.tooltip": "Put every setting back to how it was when you installed Munch."
+}

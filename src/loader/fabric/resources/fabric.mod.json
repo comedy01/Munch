@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "munch",
+	"version": "${version}",
+	"name": "Munch",
+	"description": "Eating and drinking animations. Food gets bitten down with every chew, and drinks drain as you sip, for every food and drink, modded ones included. Client-side only.",
+	"icon": {
+		"16": "assets/munch/icon16.png",
+		"32": "assets/munch/icon32.png",
+		"128": "assets/munch/icon128.png"
+	},
+	"authors": [
+		"comedy01"
+	],
+	"license": "MIT",
+	"contact": {
+		"homepage": "https://github.com/comedy01/Munch",
+		"sources": "https://github.com/comedy01/Munch",
+		"issues": "https://github.com/comedy01/Munch/issues"
+	},
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.munch.fabric.MunchFabric"
+		],
+		"modmenu": [
+			"dev.munch.fabric.MunchModMenu"
+		]
+	},
+	"mixins": [
+		"munch.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"fabric-api": "*",
+		"minecraft": "${range}",
+		"java": ">=${java_version}"
+	},
+	"suggests": {
+		"modmenu": "*"
+	}
+}

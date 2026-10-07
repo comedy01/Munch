@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "dev.munch.mixin",
+	"compatibilityLevel": "JAVA_${java_version}",
+	"client": [
+		"SpriteContentsAccessor"${pack_mixins}
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

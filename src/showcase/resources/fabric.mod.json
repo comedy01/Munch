@@ -1,0 +1,20 @@
+{
+	"schemaVersion": 1,
+	"id": "munch-showcase",
+	"version": "1.0.0",
+	"name": "Munch showcase",
+	"description": "Development-only film director for Munch's gallery video. Not shipped.",
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.munch.showcase.MunchShowcaseFabric"
+		]
+	},
+	"depends": {
+		"munch": "*"
+	},
+	"mixins": [
+		"munch_showcase.mixins.json"
+	]
+}

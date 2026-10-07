@@ -1,0 +1,3 @@
+ItemModelResolverMixin
+ItemStackRenderStateAccessor
+LayerModelAccessor

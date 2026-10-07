@@ -1,0 +1,20 @@
+{
+	"schemaVersion": 1,
+	"id": "munch-selftest",
+	"version": "1.0.0",
+	"name": "Munch self test",
+	"description": "Development-only in-world checks for Munch. Not shipped.",
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.munch.selftest.fabric.MunchSelfTestFabric"
+		]
+	},
+	"depends": {
+		"munch": "*"
+	},
+	"mixins": [
+		"munch_selftest.mixins.json"
+	]
+}
