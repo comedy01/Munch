@@ -98,7 +98,7 @@ public final class Models {
                     default -> "Munch(" + original + ")";
                 };
             }
-            if (name.equals("getQuads") && args != null && args.length >= 3) {
+            if (isGetQuads(method)) {
                 return args[1] == null ? quads : List.of();
             }
             Object result;
@@ -116,6 +116,12 @@ public final class Models {
                 return swapped;
             }
             return result;
+        }
+
+        private static boolean isGetQuads(Method method) {
+            Class<?>[] params = method.getParameterTypes();
+            return method.getReturnType() == List.class && params.length >= 3
+                    && params[1] == Direction.class && params[2] == RandomSource.class;
         }
     }
 }

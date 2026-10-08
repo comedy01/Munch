@@ -293,3 +293,41 @@ jar {
 		rename { "${it}_${project.base.archivesName.get()}" }
 	}
 }
+
+if (remap) {
+	def selftestJar = tasks.register("selftestJar", Jar) {
+		from sourceSets.selftest.output
+		archiveClassifier = "selftest-dev"
+	}
+	tasks.register("remapSelftestJar", net.fabricmc.loom.task.RemapJarTask) {
+		inputFile = selftestJar.flatMap { it.archiveFile }
+		archiveClassifier = "selftest"
+		addNestedDependencies = false
+	}
+}
+
+if (forge && project.hasProperty("prodselftest")) {
+	mixin {
+		add sourceSets.selftest, "munch_selftest.refmap.json"
+	}
+	dependencies {
+		selftestAnnotationProcessor "org.spongepowered:mixin:0.8.5:processor"
+	}
+	def selftestJar = tasks.register("selftestJar", Jar) {
+		from sourceSets.selftest.output
+		archiveClassifier = "selftest-dev"
+		manifest.attributes("MixinConfigs": "munch_selftest.mixins.json")
+	}
+	["selftestRuntimeElements", "selftestApiElements"].each { name ->
+		configurations.create(name) {
+			canBeConsumed = true
+			canBeResolved = false
+		}
+	}
+	obfuscation.reobfuscate(selftestJar, sourceSets.selftest)
+	processSelftestResources {
+		filesMatching("munch_selftest.mixins.json") {
+			filter { line -> line.contains('"package"') ? line + '\n\t"refmap": "munch_selftest.refmap.json",' : line }
+		}
+	}
+}
